@@ -491,7 +491,6 @@ QTabBar::tab:hover:!selected {
        <property name="spacing">
         <number>10</number>
        </property>
-       <!-- LEFT SIDEBAR: tabs + controls -->
        <item>
         <widget class="QStackedWidget" name="parametersStack">
          <property name="minimumSize">
@@ -612,6 +611,249 @@ QTabBar::tab:hover:!selected {
                <string>Segmentation</string>
               </attribute>
               <layout class="QVBoxLayout" name="tabSegmentationLayout">
+               <!-- Method selection -->
+               <item>
+                <widget class="QLabel" name="labelSegMethod">
+                 <property name="text">
+                  <string>Method</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="comboSegMethod">
+                 <item>
+                  <property name="text">
+                   <string>KMeans</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>MeanShift</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Agglomerative</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item>
+                <widget class="QStackedWidget" name="segParamsStack">
+                 <!-- Page 0: KMeans -->
+                 <widget class="QWidget" name="pageKMeans">
+                  <layout class="QVBoxLayout" name="pageKMeansLayout">
+                   <item>
+                    <widget class="QLabel" name="labelKValue">
+                     <property name="text">
+                      <string>K (clusters)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinKValue">
+                     <property name="minimum">
+                      <number>2</number>
+                     </property>
+                     <property name="maximum">
+                      <number>20</number>
+                     </property>
+                     <property name="value">
+                      <number>5</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="spacerKMeans">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                 <!-- Page 1: MeanShift -->
+                 <widget class="QWidget" name="pageMeanShift">
+                  <layout class="QVBoxLayout" name="pageMeanShiftLayout">
+                   <item>
+                    <widget class="QLabel" name="labelSpatialRadius">
+                     <property name="text">
+                      <string>Spatial Radius</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinSpatialRadius">
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>50</number>
+                     </property>
+                     <property name="value">
+                      <number>7</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="labelColorRadius">
+                     <property name="text">
+                      <string>Color Radius</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDoubleSpinBox" name="spinColorRadius">
+                     <property name="minimum">
+                      <double>1.000000000000000</double>
+                     </property>
+                     <property name="maximum">
+                      <double>50.000000000000000</double>
+                     </property>
+                     <property name="singleStep">
+                      <double>0.500000000000000</double>
+                     </property>
+                     <property name="value">
+                      <double>6.500000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="labelMinRegion">
+                     <property name="text">
+                      <string>Min Region Size</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinMinRegion">
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>500</number>
+                     </property>
+                     <property name="value">
+                      <number>20</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="spacerMS">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                 <!-- Page 2: Agglomerative -->
+                 <widget class="QWidget" name="pageAgglomerative">
+                  <layout class="QVBoxLayout" name="pageAgglomerativeLayout">
+                   <item>
+                    <widget class="QLabel" name="labelNClusters">
+                     <property name="text">
+                      <string>N Clusters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinNClusters">
+                     <property name="minimum">
+                      <number>2</number>
+                     </property>
+                     <property name="maximum">
+                      <number>20</number>
+                     </property>
+                     <property name="value">
+                      <number>6</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="labelLinkage">
+                     <property name="text">
+                      <string>Linkage</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboLinkage">
+                     <item>
+                      <property name="text">
+                       <string>ward</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>average</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>complete</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>single</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="labelResizeDim">
+                     <property name="text">
+                      <string>Resize Dim</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinResizeDim">
+                     <property name="minimum">
+                      <number>20</number>
+                     </property>
+                     <property name="maximum">
+                      <number>300</number>
+                     </property>
+                     <property name="singleStep">
+                      <number>10</number>
+                     </property>
+                     <property name="value">
+                      <number>100</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="spacerAgg">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+               <!-- Apply button -->
                <item>
                 <widget class="QPushButton" name="btnApplySegmentation">
                  <property name="text">
@@ -640,7 +882,6 @@ QTabBar::tab:hover:!selected {
          </widget>
         </widget>
        </item>
-       <!-- RIGHT AREA: images side by side -->
        <item>
         <layout class="QVBoxLayout" name="singleImagesColumn">
          <property name="spacing">
@@ -802,367 +1043,8 @@ QTabBar::tab:hover:!selected {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="pageMatchView">
-      <layout class="QHBoxLayout" name="pageMatchViewLayout">
-       <property name="spacing">
-        <number>10</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="matchSideFrame">
-         <property name="minimumSize">
-          <size>
-           <width>290</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>320</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <layout class="QVBoxLayout" name="matchSideLayout">
-          <property name="spacing">
-           <number>14</number>
-          </property>
-          <property name="leftMargin">
-           <number>14</number>
-          </property>
-          <property name="topMargin">
-           <number>14</number>
-          </property>
-          <property name="rightMargin">
-           <number>14</number>
-          </property>
-          <property name="bottomMargin">
-           <number>12</number>
-          </property>
-          <item>
-           <layout class="QFormLayout" name="formMatching">
-            <property name="horizontalSpacing">
-             <number>24</number>
-            </property>
-            <property name="verticalSpacing">
-             <number>14</number>
-            </property>
-            <item row="0" column="0">
-             <widget class="QLabel" name="labelThreshold">
-              <property name="text">
-               <string>Threshold</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QDoubleSpinBox" name="matchThreshold">
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>2</number>
-              </property>
-              <property name="maximum">
-               <double>1.000000000000000</double>
-              </property>
-              <property name="singleStep">
-               <double>0.050000000000000</double>
-              </property>
-              <property name="value">
-               <double>0.800000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="labelMatches">
-              <property name="text">
-               <string># of Matches</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="matchCount">
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-              </property>
-              <property name="minimum">
-               <number>10</number>
-              </property>
-              <property name="maximum">
-               <number>500</number>
-              </property>
-              <property name="singleStep">
-               <number>10</number>
-              </property>
-              <property name="value">
-               <number>150</number>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QLabel" name="lblMatchUsing">
-            <property name="text">
-             <string>Match Using:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMatchNCC">
-            <property name="text">
-             <string>Normalized Cross Correlations.</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMatchSSD">
-            <property name="text">
-             <string>Sum of Squared Differences</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="matchRightLayout">
-         <property name="spacing">
-          <number>10</number>
-         </property>
-         <item>
-          <layout class="QHBoxLayout" name="matchTitlesRow">
-           <item>
-            <layout class="QHBoxLayout" name="matchTitle1Row">
-             <item>
-              <widget class="QLabel" name="lblImg1Title">
-               <property name="text">
-                <string>Image 01</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnUploadMatchImage1">
-               <property name="toolTip">
-                <string>Upload Image 01</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="matchTitle2Row">
-             <item>
-              <widget class="QLabel" name="lblImg2Title">
-               <property name="text">
-                <string>Image 02</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnUploadMatchImage2">
-               <property name="toolTip">
-                <string>Upload Image 02</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item>
-        <layout class="QHBoxLayout" name="matchInputRow">
-         <property name="stretch">
-          <string>1,1</string>
-         </property>
-           <item>
-            <widget class="QFrame" name="matchImage1Frame">
-             <layout class="QVBoxLayout" name="matchImage1Layout">
-              <property name="leftMargin">
-               <number>8</number>
-              </property>
-              <property name="topMargin">
-               <number>8</number>
-              </property>
-              <property name="rightMargin">
-               <number>8</number>
-              </property>
-              <property name="bottomMargin">
-               <number>8</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="lblMatchImage1">
-                <property name="minimumSize">
-                 <size>
-                  <width>360</width>
-                  <height>250</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>No Image</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QFrame" name="matchImage2Frame">
-             <layout class="QVBoxLayout" name="matchImage2Layout">
-              <property name="leftMargin">
-               <number>8</number>
-              </property>
-              <property name="topMargin">
-               <number>8</number>
-              </property>
-              <property name="rightMargin">
-               <number>8</number>
-              </property>
-              <property name="bottomMargin">
-               <number>8</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="lblMatchImage2">
-                <property name="minimumSize">
-                 <size>
-                  <width>360</width>
-                  <height>250</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>No Image</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QFrame" name="matchResultFrame">
-           <layout class="QVBoxLayout" name="matchResultLayout">
-            <property name="leftMargin">
-             <number>8</number>
-            </property>
-            <property name="topMargin">
-             <number>8</number>
-            </property>
-            <property name="rightMargin">
-             <number>8</number>
-            </property>
-            <property name="bottomMargin">
-             <number>8</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="lblMatchResult">
-              <property name="minimumSize">
-               <size>
-                <width>760</width>
-                <height>300</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Matching Result</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignmentFlag::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="matchTimeFrame">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <layout class="QHBoxLayout" name="matchTimeLayout">
-            <property name="leftMargin">
-             <number>12</number>
-            </property>
-            <property name="topMargin">
-             <number>8</number>
-            </property>
-            <property name="rightMargin">
-             <number>12</number>
-            </property>
-            <property name="bottomMargin">
-             <number>8</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="lblTimeLabelMatch">
-              <property name="text">
-               <string>Computational Time:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacerMatch">
-              <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="lblTimeValueMatch">
-              <property name="text">
-               <string>0.000 S</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
-
   </layout>
  </widget>
  <resources/>

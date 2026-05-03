@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QFileDialog
 from PySide6.QtCore import Qt
 from utils.converters import cv_to_pixmap
 from controllers.threshold_controller import ThresholdController
+from controllers.segmentation_controller import SegmentationController
 
 
 class MainController:
@@ -11,6 +12,7 @@ class MainController:
         self.model = model
         self.window = window
         self.threshold_controller = ThresholdController(ui, model, self.ui.statusbar)
+        self.segmentation_controller = SegmentationController(ui, model, self.ui.statusbar)
         self._connect_signals()
 
     # ================= CONNECT =================
@@ -70,15 +72,15 @@ class MainController:
 
     # ================= SEGMENTATION =================
     def apply_segmentation(self):
-
         if self.model.original_image is None:
             self.ui.statusbar.showMessage("Load image first", 3000)
             return
-
-        self.model.processed_image = self.model.segment_image()
-        self.display_processed_image(self.model.processed_image)
-
-        self.ui.statusbar.showMessage("Segmentation applied", 3000)
+        try:
+            self.model.processed_image = self.segmentation_controller.apply_segmentation()
+            self.display_processed_image(self.model.processed_image)
+            self.ui.statusbar.showMessage("Segmentation applied", 3000)
+        except Exception as e:
+            self.ui.statusbar.showMessage(f"Segmentation error: {e}", 5000)
 
     # ================= DISPLAY =================
     def display_original_image(self, img):

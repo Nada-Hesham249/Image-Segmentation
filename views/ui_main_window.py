@@ -7,7 +7,7 @@ from PySide6.QtGui import QAction
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import (
     QMenu, QMenuBar, QStatusBar,
-    QWidget, QComboBox, QSpinBox, QPushButton,
+    QWidget, QComboBox, QSpinBox, QDoubleSpinBox, QPushButton,
     QTabWidget, QStackedWidget
 )
 
@@ -31,25 +31,11 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         MainWindow.resize(1366, 768)
 
-        # ================= MENU =================
-        # self.actionOpen_Image = QAction(MainWindow)
-        # self.actionSave_Result = QAction(MainWindow)
-        # self.actionExit = QAction(MainWindow)
-
-        # self.menubar = QMenuBar(MainWindow)
-        # self.menuFile = QMenu("File", self.menubar)
-        # self.menubar.addMenu(self.menuFile)
-        # MainWindow.setMenuBar(self.menubar)
-
-        # self.menuFile.addAction(self.actionOpen_Image)
-        # self.menuFile.addAction(self.actionSave_Result)
-        # self.menuFile.addAction(self.actionExit)
-
         self.statusbar = QStatusBar(MainWindow)
         MainWindow.setStatusBar(self.statusbar)
 
         # ================= WIDGETS FROM UI =================
-        # Top bar buttons (now on the LEFT side)
+        # Top bar buttons
         self.btnUploadOriginal = self.centralwidget.findChild(QPushButton, "btnUploadOriginal")
         self.btnReset = self.centralwidget.findChild(QPushButton, "btnReset")
 
@@ -57,15 +43,34 @@ class Ui_MainWindow(object):
         self.lblOriginal = self.centralwidget.findChild(QWidget, "lblOriginal")
         self.lblProcessed = self.centralwidget.findChild(QWidget, "lblProcessed")
 
-        # Sidebar: parametersStack + tabs (embedded in left sidebar of pageSingleView)
+        # Sidebar
         self.parametersStack = self.centralwidget.findChild(QStackedWidget, "parametersStack")
         self.tabs = self.centralwidget.findChild(QTabWidget, "tabs")
 
-        # Tab controls
+        # ---- Threshold tab controls ----
         self.comboThresholdMode = self.centralwidget.findChild(QComboBox, "comboThresholdMode")
         self.comboThresholdTechnique = self.centralwidget.findChild(QComboBox, "comboThresholdTechnique")
         self.windowSize = self.centralwidget.findChild(QSpinBox, "windowSize")
         self.btnApplyThreshold = self.centralwidget.findChild(QPushButton, "btnApplyThreshold")
+
+        # ---- Segmentation tab controls ----
         self.btnApplySegmentation = self.centralwidget.findChild(QPushButton, "btnApplySegmentation")
+
+        # Method selector + per-method parameter stack
+        self.comboSegMethod = self.centralwidget.findChild(QComboBox, "comboSegMethod")
+        self.segParamsStack = self.centralwidget.findChild(QStackedWidget, "segParamsStack")
+
+        # KMeans params
+        self.spinKValue = self.centralwidget.findChild(QSpinBox, "spinKValue")
+
+        # MeanShift params
+        self.spinSpatialRadius = self.centralwidget.findChild(QSpinBox, "spinSpatialRadius")
+        self.spinColorRadius = self.centralwidget.findChild(QDoubleSpinBox, "spinColorRadius")
+        self.spinMinRegion = self.centralwidget.findChild(QSpinBox, "spinMinRegion")
+
+        # Agglomerative params
+        self.spinNClusters = self.centralwidget.findChild(QSpinBox, "spinNClusters")
+        self.comboLinkage = self.centralwidget.findChild(QComboBox, "comboLinkage")
+        self.spinResizeDim = self.centralwidget.findChild(QSpinBox, "spinResizeDim")
 
         QMetaObject.connectSlotsByName(MainWindow)
