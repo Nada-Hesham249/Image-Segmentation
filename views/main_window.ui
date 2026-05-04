@@ -636,6 +636,11 @@ QTabBar::tab:hover:!selected {
                    <string>Agglomerative</string>
                   </property>
                  </item>
+                 <item>
+                <property name="text">
+                    <string>RegionGrowing</string>
+                </property>
+                </item>
                 </widget>
                </item>
                <item>
@@ -851,6 +856,42 @@ QTabBar::tab:hover:!selected {
                    </item>
                   </layout>
                  </widget>
+                 <!-- Page 3: RegionGrowing -->
+                <widget class="QWidget" name="pageRegionGrowing">
+                <layout class="QVBoxLayout" name="pageRegionGrowingLayout">
+                    <item>
+                    <widget class="QLabel" name="labelNSeeds">
+                        <property name="text"><string>Number of Seeds</string></property>
+                    </widget>
+                    </item>
+                    <item>
+                    <widget class="QSpinBox" name="spinNSeeds">
+                        <property name="minimum"><number>1</number></property>
+                        <property name="maximum"><number>50</number></property>
+                        <property name="value"><number>5</number></property>
+                    </widget>
+                    </item>
+                    <item>
+                    <widget class="QLabel" name="labelRGThreshold">
+                        <property name="text"><string>Color Threshold</string></property>
+                    </widget>
+                    </item>
+                    <item>
+                    <widget class="QDoubleSpinBox" name="spinRGThreshold">
+                        <property name="minimum"><double>1.0</double></property>
+                        <property name="maximum"><double>100.0</double></property>
+                        <property name="singleStep"><double>1.0</double></property>
+                        <property name="value"><double>15.0</double></property>
+                    </widget>
+                    </item>
+                    <item>
+                    <spacer name="spacerRG">
+                        <property name="orientation"><enum>Qt::Orientation::Vertical</enum></property>
+                        <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+                    </spacer>
+                    </item>
+                </layout>
+                </widget>
                 </widget>
                </item>
                <!-- Apply button -->

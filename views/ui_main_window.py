@@ -73,4 +73,8 @@ class Ui_MainWindow(object):
         self.comboLinkage = self.centralwidget.findChild(QComboBox, "comboLinkage")
         self.spinResizeDim = self.centralwidget.findChild(QSpinBox, "spinResizeDim")
 
+        # RegionGrowing params
+        self.spinNSeeds = self.centralwidget.findChild(QSpinBox, "spinNSeeds")
+        self.spinRGThreshold = self.centralwidget.findChild(QDoubleSpinBox, "spinRGThreshold")
+
         QMetaObject.connectSlotsByName(MainWindow)
