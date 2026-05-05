@@ -30,7 +30,7 @@ class ImageModel:
         Segments self.original_image using the selected method.
 
         Args:
-            method (str): One of "KMeans", "MeanShift", "Agglomerative"
+            method (str): One of "KMeans", "MeanShift", "Agglomerative", "RegionGrowing"
             params (dict): Method-specific parameters.
 
         Returns:
@@ -52,25 +52,35 @@ class ImageModel:
         elif method == "MeanShift":
             from core.meanshift_segmentation import meanshift_segment
             spatial_radius = params.get("spatial_radius", 7)
-            color_radius = params.get("color_radius", 6.5)
-            min_region = params.get("min_region", 20)
+            color_radius   = params.get("color_radius", 6.5)
+            min_region     = params.get("min_region", 20)
             return meanshift_segment(
                 self.original_image,
                 spatial_radius=spatial_radius,
                 color_radius=color_radius,
-                min_region=min_region
+                min_region=min_region,
             )
 
         elif method == "Agglomerative":
             from core.agglomerative_segmentation import agglomerative_segment
-            n_clusters = params.get("n_clusters", 4)
-            linkage = params.get("linkage", "ward")
+            n_clusters    = params.get("n_clusters", 4)
+            linkage       = params.get("linkage", "ward")
             resize_dim_val = params.get("resize_dim", 80)
             return agglomerative_segment(
                 self.original_image,
                 n_clusters=n_clusters,
                 linkage=linkage,
-                resize_dim=(resize_dim_val, resize_dim_val)
+                resize_dim=(resize_dim_val, resize_dim_val),
+            )
+
+        elif method == "RegionGrowing":
+            from core.region_growing_segmentation import region_growing_segment
+            n_seeds   = params.get("n_seeds", 5)
+            threshold = params.get("threshold", 15.0)
+            return region_growing_segment(
+                self.original_image,
+                n_seeds=n_seeds,
+                threshold=threshold,
             )
 
         else:
