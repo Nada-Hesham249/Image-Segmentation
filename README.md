@@ -9,7 +9,6 @@ The system works on both **grayscale and color images** to produce accurate regi
 
 This mode focuses on converting grayscale images into binary or multi-class segmented outputs using different thresholding strategies.
 
----
 
 ## ✨ Features
 
@@ -36,7 +35,6 @@ This mode focuses on converting grayscale images into binary or multi-class segm
 
 This mode applies clustering and region-based methods to segment grayscale and color images without labels.
 
----
 
 ## ✨ Features
 
