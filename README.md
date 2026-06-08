@@ -48,8 +48,8 @@ This mode applies clustering and region-based methods to segment grayscale and c
 ---
 
 ### 🌱 Region Growing Segmentation
-- Starts from seed points
-- Expands regions based on pixel similarity
+
+<img width="1702" height="934" alt="image" src="https://github.com/user-attachments/assets/4de9195c-eee6-438d-ae6f-6a6762359c75" />
 
 ---
 
